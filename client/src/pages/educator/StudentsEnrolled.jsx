@@ -5,7 +5,7 @@ const StudentsEnrolled = () => {
     <div>
       <h1>Educator Student enrolled</h1>
     </div>
-  )
+  );
 }
 
 export default StudentsEnrolled

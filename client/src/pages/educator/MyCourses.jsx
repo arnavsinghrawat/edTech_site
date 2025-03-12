@@ -5,7 +5,7 @@ const MyCourses = () => {
     <div>
       <h1>Educator Courses</h1>
     </div>
-  )
+  );
 }
 
 export default MyCourses

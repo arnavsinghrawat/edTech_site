@@ -5,7 +5,7 @@ const TestimonialsSection = () => {
     <div>
       <h1>Testimonial Section</h1>
     </div>
-  )
+  );
 }
 
 export default TestimonialsSection

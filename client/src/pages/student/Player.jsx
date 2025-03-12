@@ -5,7 +5,7 @@ const Player = () => {
     <div>
       <h1>Student Player</h1>
     </div>
-  )
+  );
 }
 
 export default Player

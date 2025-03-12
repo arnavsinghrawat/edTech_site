@@ -5,7 +5,7 @@ const Dashboard = () => {
     <div>
       <h1>Educator DashBoard</h1>
     </div>
-  )
+  );
 }
 
 export default Dashboard

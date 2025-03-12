@@ -5,7 +5,7 @@ const CourseCart = () => {
     <div>
       <h1>Course Cart</h1>
     </div>
-  )
+  );
 }
 
 export default CourseCart

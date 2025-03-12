@@ -5,7 +5,7 @@ const CourseDetails = () => {
     <div>
       <h1>Student Course details</h1>
     </div>
-  )
+  );
 }
 
 export default CourseDetails
