@@ -1,12 +1,13 @@
 import React from 'react'
-// alert("wassup");
+import Hero from '../../components/student/Hero';
+
 const Home = () => {
   console.log("home page is rendered");
   return (
-    <div>
-      <h1>Home</h1>
+    <div className='flex flex-col items-center space-y-7 text-center'>
+      <Hero/>
     </div>
-  );
+  )
 }
 
 export default Home
