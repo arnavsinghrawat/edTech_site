@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../../assets/assets';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SignIn, useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { AppContext } from '../../context/AppContext';
 
 const Navbar = () => {
+
+  const {navigate} = useContext(AppContext)
+  const isCourseListPage = location.pathname.includes('/course-list');
 
   const clerk = useClerk();
   console.log('Clerk object:', clerk);
 
-  const isCourseListPage = location.pathname.includes('/course-list');
+  
   const {openSignIn} = useClerk(); // this function is to
   // use clerk to sign in we are using destructuring to 
   // obtain opensignin from the many things useClerk() gives
@@ -18,7 +22,7 @@ const Navbar = () => {
     <div className={`flex items-center justify-between px-4 sm:px-10 md:px-14
     lg:px-36 border-b border-gray-500 py-4 ${isCourseListPage ? 'bg-white' : 'bg-cyan-100/70'}`}>
 
-      <img src={assets.logo} alt="Logo" className='w-28 lg:w-32 cursor-pointer' />
+      <img src={assets.logo} alt="Logo" className='w-28 lg:w-32 cursor-pointer' onClick={()=> navigate('/')}/>
 
       <div className='hidden md:flex items-centre gap-5
        text-gray-500'>
