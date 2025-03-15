@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext';
 
 const Navbar = () => {
 
-  const {navigate} = useContext(AppContext)
+  const {navigate,isEducator,setIsEducator} = useContext(AppContext)
   const isCourseListPage = location.pathname.includes('/course-list');
 
   const clerk = useClerk();
@@ -31,7 +31,7 @@ const Navbar = () => {
 
           {user && 
           <>
-          <button>Become Educator</button>
+          <button onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator DashBoard' : 'Become Educator'}</button>
           | <Link to='/my-enrollments'>My Enrollments</Link>
           </>}
           {/* reason for <> is as react component must return a single component */}
@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className='flex items-center gap-1 sm:gap-2 max-sm:text-xs'>
         {user && 
           <>
-          <button>Become Educator</button>
+          <button onClick={()=>{navigate('/educator')}}>{isEducator ? 'Educator DashBoard' : 'Become Educator'}</button>
           | <Link to='/my-enrollments'>My Enrollments</Link>
           </>}
         </div>
