@@ -49,7 +49,6 @@ const CoursesList = () => {
         </div>}
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-16 gap-3 px-2 md:p-0'>
         {filteredCourse.map((course,index)=><CourseCart key={index} course={course}/>)}
-
       </div>
     </div>
 
