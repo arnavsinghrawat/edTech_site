@@ -5,6 +5,8 @@ import Loading from '../../components/student/Loading';
 import { assets } from '../../assets/assets';
 import humanizeDuration from 'humanize-duration';
 import Footer from '../../components/student/Footer';
+import Youtube from 'react-youtube';
+import YouTube from 'react-youtube';
 
 const CourseDetails = () => {
 
@@ -14,6 +16,8 @@ const CourseDetails = () => {
   const [openSections, setOpenSections] = useState({});
 
   const [isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
+  
+  const [playerData, setPlayerData] = useState(null);
 
 
   const {allCourses, calculateRating,
@@ -95,7 +99,9 @@ const CourseDetails = () => {
                         <div className='flex items-center justify-between w-full text-gray-800 md:text-default'>
                           <p >{lecture.lectureTitle}</p>
                           <div className='flex items-center gap-2'>
-                            {lecture.isPreviewFree && <p>Preview</p>}
+                            {lecture.isPreviewFree && <p onClick={() => setPlayerData({
+                              videoId: lecture.lectureUrl.split('/').pop()
+                            })}>Preview</p>}
                             <p className='mt-1 text-blue-500 cursor-pointer'>
                               {humanizeDuration(lecture.lectureDuration *60*1000, {units: ['h','m']})}
                             </p>
@@ -122,9 +128,16 @@ const CourseDetails = () => {
       {/* right column */}
       <div className='max-w-course-card z-10 shadow-custom-card rounded-t  
       md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[420px]'>
-        <img src={courseData.courseThumbnail} alt="" />
+        {/* // adding vido */}
+        {
+          playerData ?
+          <YouTube videoId={playerData.videoId} opts={{playerVars: {autoplay: 1}}} iframeClassName='w-full aspect-video'/>
+          : <img src={courseData.courseThumbnail} alt="" />
+        }
+        
         <div className='p-5'>
           <div className='flex items-center gap-2'>
+            
             <img className='w-3.5' src={assets.time_left_clock_icon} alt="" />
             <p className='text-red-500'><span className='font-medium'>5 days</span> left at this price!</p>
           </div>
