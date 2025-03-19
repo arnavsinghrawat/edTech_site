@@ -31,7 +31,7 @@ const CourseDetails = () => {
 
   useEffect(()=>{
     fetchCourseData()
-  },[])
+  },[allCourses,id])
 
   const toggleSection = (index) =>
   {
@@ -41,6 +41,8 @@ const CourseDetails = () => {
       }
     ))
   }
+
+  // returns only when course data is available
 
   return courseData ? (
     <>
