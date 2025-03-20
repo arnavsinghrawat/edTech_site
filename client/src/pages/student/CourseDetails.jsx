@@ -78,6 +78,7 @@ const CourseDetails = () => {
 
         <div className='pt-8 text-gray-800'>
           <h2 className='text-xl font-semibold'>Course Structure</h2>
+
           <div className='pt-5'>
             {courseData.courseContent.map((chapter, index) => (
               <div key={index} className='border border-gray-300 bg-white mb-2
@@ -92,7 +93,7 @@ const CourseDetails = () => {
                   <p className='text-sm md:text-default'>{chapter.chapterContent.length} lectures - {calculateChapterTime(chapter)}</p>
                 </div>
 
-                <div className={`overflow-hidden transition-all duration-300 max-h-96 ${openSections[index] ? 'max-h-96' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${openSections[index] ? 'max-h-96' : 'max-h-0'}`}>
                   <ul className='list-disc md:pl-10 pl-4 pr-4 py-2 text-gray-600 border-t border-gray-300'>
                     {chapter.chapterContent.map((lecture, i)=> (
                       <li key={i} className='flex items-start gap-2 py-1'>
@@ -101,10 +102,10 @@ const CourseDetails = () => {
                         <div className='flex items-center justify-between w-full text-gray-800 md:text-default'>
                           <p >{lecture.lectureTitle}</p>
                           <div className='flex items-center gap-2'>
-                            {lecture.isPreviewFree && <p onClick={() => setPlayerData({
+                            {lecture.isPreviewFree && <p className='text-blue-600 cursor-pointer' onClick={() => setPlayerData({
                               videoId: lecture.lectureUrl.split('/').pop()
                             })}>Preview</p>}
-                            <p className='mt-1 text-blue-500 cursor-pointer'>
+                            <p>
                               {humanizeDuration(lecture.lectureDuration *60*1000, {units: ['h','m']})}
                             </p>
                           </div>
@@ -133,7 +134,7 @@ const CourseDetails = () => {
         {/* // adding vido */}
         {
           playerData ?
-          <YouTube videoId={playerData.videoId} opts={{playerVars: {autoplay: 1}}} iframeClassName='w-full aspect-video'/>
+          <YouTube videoId={playerData.videoId} opts={{playerVars: {autoplay: 1}}} iframeClassName='w-full h-full'/>
           : <img src={courseData.courseThumbnail} alt="" />
         }
         
