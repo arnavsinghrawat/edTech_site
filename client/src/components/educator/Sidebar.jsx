@@ -28,7 +28,6 @@ const Sidebar = () => {
         gap-3 ${isActive ? 'bg-indigo-50 border-r-[6px] border-indigo-500/90':
           'hover:bg-gray-100/90 border-r-[6px] border-white hover:border-gray-100/90'
         }`}
-        
         >
           <img src={item.icon} alt="" className='w-6 h-6' />
           <p className='md:block hidden text-center'>{item.name}</p>
