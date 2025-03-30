@@ -4,6 +4,7 @@ import 'dotenv/config'
 import connectDB from './configs/mongodb.js'
 import { clerkWebhooks } from './models/Webhooks.js'
 
+
 //intialize express
 const app = express()
 
@@ -16,7 +17,8 @@ app.use(cors());
 //routes
 app.get('/',(req,res)=> res.send("api working"));
 
-app.post('/clerk', express.json(), clerkWebhooks)
+app.post('/clerk', express.json(), clerkWebhooks);
+
 /*
 How It Works
 Client (Clerk) sends a POST request
