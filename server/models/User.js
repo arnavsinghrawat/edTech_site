@@ -5,12 +5,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    name: String,
     email: {
         type: String,
         required: true
     },
-    name: String,
-    imageUrl: String
+    imageUrl: {
+        type: String,
+        required: true
+    },
+    enrolledCourses: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Course'
+        }
+    ]
 }, {timestamps: true}
 );
 
