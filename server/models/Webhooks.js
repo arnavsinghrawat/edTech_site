@@ -15,7 +15,7 @@ export const clerkWebhooks = async (req, res) => {
 
         switch (type) {
             case 'user.created': {
-                const email = data.email_addresses.length ? data.email_addresses[0].email_address : "";
+                const email = data.email_address?.length ? data.email_address[0].email_address : "";
                 const userData = {
                     _id: data.id,
                     email,
@@ -29,7 +29,7 @@ export const clerkWebhooks = async (req, res) => {
             }
 
             case 'user.updated': {
-                const email = data.email_addresses.length ? data.email_addresses[0].email_address : "";
+                const email = data.email_address?.length ? data.email_address[0].email_address : "";
                 const userData = {
                     email,
                     name: `${data.first_name} ${data.last_name}`,
