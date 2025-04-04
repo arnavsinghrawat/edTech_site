@@ -1,11 +1,16 @@
 import mongoose from 'mongoose';
 
+// whenever i get a new user i want to create a new user
+
 const userSchema = new mongoose.Schema({
     _id: {
         type: String,
         required: true
     },
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true

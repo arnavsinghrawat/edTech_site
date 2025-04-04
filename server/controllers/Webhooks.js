@@ -1,7 +1,9 @@
 import { Svix, Webhook } from "svix";
 import User from '../models/User.js';
 
+// to get the get the data from clerk about the user
 // API Controller Function to manage Clerk Users in the database
+
 export const clerkWebhooks = async (req, res) => {
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
@@ -11,15 +13,14 @@ export const clerkWebhooks = async (req, res) => {
             "svix-signature": req.headers["svix-signature"]
         });
 
-        const { data, type } = req.body;
+        const {data, type} = req.body;
 
         switch (type) {
             case 'user.created': {
-                const email = data.email_addresses[0].email_address;
                 const userData = {
                     _id: data.id,
-                    email,
-                    name: `${data.first_name} ${data.last_name}`,
+                    email: data.email_addresses[0].email_address,
+                    name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url,
                 };
 
@@ -29,10 +30,9 @@ export const clerkWebhooks = async (req, res) => {
             }
 
             case 'user.updated': {
-                const email = data.email_addresses[0].email_address;
                 const userData = {
-                    email,
-                    name: `${data.first_name} ${data.last_name}`,
+                    email: data.email_addresses[0].email_address,
+                    name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url,
                 };
 
@@ -47,10 +47,11 @@ export const clerkWebhooks = async (req, res) => {
                 break;
             }
 
-            default:
-                res.status(400).json({ success: false, message: "Unhandled event type" });
+            default:{
+                break;
+            }
         }
     } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
+        res.json({ success: false, message: error.message });
     }
 };
