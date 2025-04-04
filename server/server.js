@@ -4,7 +4,7 @@ import 'dotenv/config'
 import connectDB from './configs/mongodb.js'
 import { clerkWebhooks } from './controllers/Webhooks.js';
 import educatorRouter from './routes/educatorRoutes.js';
-import { clerkMiddleware } from '@clerk/express';
+import { clerkMiddleware } from '@clerk/express'; // for authentication of requests
 import connectCloudinary from './configs/cloudinary.js';
 
 

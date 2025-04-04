@@ -19,19 +19,19 @@ const chapterSchema = new mongoose.Schema({
 const courseSchema = new mongoose.Schema({
     courseTitle: { type: String, required: true },
     courseDescription: { type: String, required: true },
-    courseThumbnail: { type: String, required: true }, // Changed from Number to String
+    courseThumbnail: { type: String}, // Changed from Number to String
     coursePrice: { type: Number, required: true },
     isPublished: { type: Boolean, default: true },
     discount: { type: Number, required: true, min: 0, max: 100 },
-    courseContent: [chapterSchema],
+    courseContent: [chapterSchema],//
     courseRatings: [{
         userId: { type: String },
         rating: { type: Number, min: 1, max: 5 }, // Changed min from 0 to 1
-        review: { type: String }, // Added review field
-        createdAt: { type: Date, default: Date.now } // Added timestamp for rating
+        // review: { type: String }, // Added review field
+        // createdAt: { type: Date, default: Date.now } // Added timestamp for rating
     }],
     educator: { type: String, ref: 'User', required: true },
-    enrolledStudents: [{ type: String }] // Changed to array of student IDs
+    enrolledStudents: [{ type: String, ref:'User' }] // Changed to array of student IDs
 }, { 
     timestamps: true,
     minimize: false 

@@ -17,13 +17,11 @@ export const updateRoleToEducator = async (req, res)=>{
     } catch(error)
     {
         res.json({success : false, message: error.message})
-
     }
 }
 
 
-//add new course
-
+//add new course in db
 export const addCourse = async (req,res) => {
     try{
         const {courseData} = req.body
@@ -46,7 +44,7 @@ export const addCourse = async (req,res) => {
 
     }catch(error){
 
-        res.json({success: false, message: error.message})
-
+        res.json({success: false, message: error.message});
+        
     }
 }
