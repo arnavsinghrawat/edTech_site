@@ -7,7 +7,6 @@ import { CourseProgress } from "../models/CourseProgress.js";
 
 dotenv.config();
 
-
 export const getUserData = async (req,res) => {
     try {
         const userId = req.auth.userId
