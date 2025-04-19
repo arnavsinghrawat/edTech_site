@@ -11,7 +11,7 @@ export const protectEducator = async (req, res, next) => {
         {
             return res.json({success: false, message: 'Unauthorized access'})
         }
-
+    
         next()
     }catch(error)
     {

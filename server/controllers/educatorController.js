@@ -123,9 +123,14 @@ export const getEnrolledStudentsData = async (req, res) => {
         }).populate('userId', 'name imageUrl').populate('courseId','courseTitle')
 
         const enrolledStudents = purchases.map(purchase => ({
-            student: purchase.userId,
+            student: purchase.userId
+            ? purchase.userId
+            : {
+                name: 'Deleted User',
+                imageUrl: process.env.DEFAULT_USER_IMAGE // your default image URL
+            },
             courseTitle: purchase.courseId.courseTitle,
-            purchaseData: purchase.createdAt
+            purchaseDate: purchase.createdAt
         }))
 
         res.json({success: true, enrolledStudents})

@@ -22,7 +22,6 @@ app.use(cors());
 app.use(clerkMiddleware())
 
 //routes
-
 app.get('/',(req,res)=> res.send("api working"));
 app.post('/clerk', express.json(), clerkWebhooks);
 app.use('/api/educator', express.json(), educatorRouter)
