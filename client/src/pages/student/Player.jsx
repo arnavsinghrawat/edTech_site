@@ -55,9 +55,9 @@ const Player = () => {
  // Fixed useEffect
   useEffect(() => {
     if (enrolledCourses.length > 0) {
-      getCourseData();  // Added parentheses to call the function
+      getCourseData();  
     }
-  }, [enrolledCourses]); // Added dependencies
+  }, [enrolledCourses]); 
 
   const markLectureAsCompleted = async (lectureId) => {
     try
@@ -87,7 +87,6 @@ const Player = () => {
       if(data.success)
       {
         setProgressData(data.progressData)
-        
       }else
       {
         toast.error(data.message)
@@ -125,6 +124,8 @@ const Player = () => {
       getCourseProgress()
   })
 
+  // console.log(playerData);
+
   return courseData ?  (
     <>
     <div className='p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:px-36'>
@@ -156,7 +157,7 @@ const Player = () => {
                           <p className='mt-1'>{lecture.lectureTitle}</p>
                           <div className='flex  items-center gap-2'>
                             {lecture.lectureUrl && <p className='text-blue-500 cursor-pointer' onClick={() => setPlayerData({
-                              ...lecture, chapter: index + 1, lecture: i + 1
+                              ...lecture, chapter: index + 1, lecture: i + 1,
                             })}>Watch</p>}
                             <p>
                               {humanizeDuration(lecture.lectureDuration *60*1000, {units: ['h','m']})}
@@ -183,7 +184,8 @@ const Player = () => {
 
         {playerData ? (
           <div className='md: mt-10'>
-            <YouTube videoId={playerData.lectureUrl.split('/').pop()}
+            {console.log(playerData.lectureUrl.split('/')[3].split('=')[1].split('&')[0])}
+            <YouTube videoId={playerData.lectureUrl.split('v=')[1]}
             iframeClassName='w-full aspect-video'/>
 
             <div className='flex justify-between items-center mt-1'>

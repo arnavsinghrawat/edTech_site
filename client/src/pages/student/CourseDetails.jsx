@@ -153,7 +153,7 @@ const CourseDetails = () => {
                           <p >{lecture.lectureTitle}</p>
                           <div className='flex items-center gap-2'>
                             {lecture.isPreviewFree && <p className='text-blue-600 cursor-pointer' onClick={() => setPlayerData({
-                              videoId: lecture.lectureUrl.split('/').pop()
+                              videoId: lecture.lectureUrl.split('?v=')[1]
                             })}>Preview</p>}
                             <p>
                               {humanizeDuration(lecture.lectureDuration *60*1000, {units: ['h','m']})}
